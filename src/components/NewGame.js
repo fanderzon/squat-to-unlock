@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 
-class GameList extends Component{
+class NewGame extends Component{
   render() {
     return (
       <div>
@@ -9,28 +9,17 @@ class GameList extends Component{
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <ul className="nav navbar-nav navbar-left">
-              <li className="pull-left"><a href="#"><i className="fa fa-bars"></i></a></li>
-              <li className="navbar-text">
+              <li className="pull-left">
+                <Link to="/games">
+                  <i className="fa fa-chevron-left"></i>
+                </Link>
               </li>
-            </ul>
-            <p className="navbar-text pull-left">Games</p>
-
-            <ul className="nav navbar-nav navbar-right pull-right">
-              <li className="pull-right">
-                <Link to="/new_game"><i className="fa fa-plus"></i></Link>
+              <li className="navbar-text">
+                New Game
               </li>
             </ul>
           </div>
         </nav>
-
-        <div className="jumbotron bg-success random-game-container">
-          <div className="col-md-12 text-center">
-            <button className="btn random-game-btn"><img src="./images/random_game.png" /></button>
-          </div>
-          <div className="col-md-12 list-header">
-            RUNNING
-          </div>
-        </div>
 
         <div className="custom-row">
 
@@ -72,4 +61,4 @@ class GameList extends Component{
   }
 }
 
-export default GameList;
+export default NewGame;
