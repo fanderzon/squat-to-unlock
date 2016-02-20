@@ -15,7 +15,7 @@ console.log('GameItem', props);
     <tr>
       <td className="small-column"><img src={icon} className="game-type-icon" /></td>
       <td>
-        <div className="usernameColumn">
+        <div className="tallColumn">
           {username}
           <h6>
             {noPlayers} / 4 players, 100 meters
@@ -48,28 +48,27 @@ class GameList extends Component{
           </div>
         </nav>
 
-        <div className="jumbotron bg-success random-game-container">
-          <div className="col-md-12 text-center">
-            <button className="btn random-game-btn"><img src="./images/random_game.png" /></button>
-          </div>
-          <div className="col-md-12 list-header">
-            RUNNING
+        <div className="row">
+          <div className="jumbotron bg-success">
+            <div className="col-md-12 text-center">
+              <button className="btn random-game-btn"><img src="./images/random_game.png" /></button>
+            </div>
+            <div className="list-header">
+              RUNNING
+            </div>
           </div>
         </div>
 
-        <div className="custom-row">
+        <div className="row">
+          <table className="table table-striped custom-table table-hover">
+            <tbody>
 
-          <div className="col-md-12">
-            <table className="table table-striped game-table table-hover">
-              <tbody>
-
-                {Array.isArray(this.props.games) && this.props.games.map(function( game, i ) {
+              {Array.isArray(this.props.games) && this.props.games.map(function( game, i ) {
                   return <GameItem key={i} game={game} players={this.props.players}  />
-                }.bind(this))}
+              }.bind(this))}
 
-              </tbody>
-            </table>
-          </div>
+            </tbody>
+          </table>
         </div>
 
       </div>

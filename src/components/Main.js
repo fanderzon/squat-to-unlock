@@ -18,7 +18,7 @@ class Main extends Component{
           <div className="row footer bg-dark">
             <div className="col-md-12 text-center">
               <h5>
-                <Link to="/games">Squat to unlock</Link>
+                <Link to="/signup">Squat to unlock</Link>
               </h5>
             </div>
           </div>

@@ -1,5 +1,10 @@
-import { createStore } from 'redux';
-import { reducer } from './reducers/reducer.js';
+import { createStore, combineReducers } from 'redux';
+import { gamesReducer, playersReducer } from './reducers/reducers.js';
+
+export const reducer = combineReducers({
+    games: gamesReducer,
+    players: playersReducer
+});
 
 export default function makeStore() {
   return createStore(reducer);

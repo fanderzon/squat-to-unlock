@@ -100,7 +100,9 @@ export function startGame( state, gameId ) {
 }
 
 export function incrementScore( state, gameId, playerId ) {
-  return state.map(function() {
-
+  return state.map(function( state ) {
+    if (game.gameId !== gameId || game.status !== 'finished') {
+      return game;
+    }
   });
 }

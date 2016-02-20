@@ -9,6 +9,23 @@ store.subscribe(function() {
 });
 
 store.dispatch({
+  type: 'ADD_PLAYER',
+  username: 'banana'
+});
+store.dispatch({
+  type: 'ADD_PLAYER',
+  username: 'penguin'
+});
+store.dispatch({
+  type: 'ADD_PLAYER',
+  username: 'fanderzon'
+});
+store.dispatch({
+  type: 'ADD_PLAYER',
+  username: 'planting'
+});
+
+store.dispatch({
   type: 'CREATE_GAME',
   userId: 4,
   gameOptions: {
@@ -26,5 +43,5 @@ store.dispatch({
 store.dispatch({
   type: 'JOIN_GAME',
   userId: 4,
-  gameId: 2 
+  gameId: 2
 });
