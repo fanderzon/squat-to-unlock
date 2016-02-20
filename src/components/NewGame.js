@@ -15,13 +15,79 @@ class NewGame extends Component{
           </div>
         </nav>
 
-        <div className="row">
+        <div className="row m-t-3">
 
-          <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">Profile</a></li>
-            <li role="presentation"><a href="#">Messages</a></li>
-          </ul>
+          <div className="col-md-12">
+
+            <form className="form-horizontal">
+
+              <div className="form-group col-md-12">
+                <label>Distance</label>
+                <select className="form-control col-md-12">
+                  <option value="100">100 meters</option>
+                  <option value="200">200 meters</option>
+                  <option value="300">300 meters</option>
+                  <option value="500">500 meters</option>
+                </select>
+              </div>
+
+              <div className="row">
+                <div className="form-group col-md-12" style={{ marginBottom: 0 + 'px' }}>
+                  <label className="col-md-12">Select charity</label>
+                </div>
+
+                <table className="table table-striped custom-table table-hover">
+                  <tbody>
+                    <tr>
+                      <td><img src="./images/amnesty.png" className="charity-icon" /></td>
+                      <td>
+                        <div className="tallColumn">
+                          Amnesty
+                          <h6>
+                            Human rights
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><img src="./images/wwf.png"  className="charity-icon" /></td>
+                      <td>
+                        <div className="tallColumn">
+                          WWF
+                          <h6>
+                            Wildlife conservation and endangered species
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="form-group col-md-12">
+                <label>Donation to winning charity (optional)</label>
+                <select className="form-control col-md-12">
+                  <option value="1">1 dollar</option>
+                  <option value="5">5 dollar</option>
+                  <option value="10">10 dollar</option>
+                  <option value="100">100 dollar</option>
+                </select>
+              </div>
+
+
+            </form>
+          </div>
 
         </div>
 

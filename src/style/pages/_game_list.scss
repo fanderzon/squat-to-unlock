@@ -27,19 +27,3 @@
   width: 33px;
   height: 23px;
 }
-
-.small-column {
-  max-width: 120px !important;
-}
-
-.game-table {
-  margin-left: 0px;
-  margin-right: 0px;
-  .usernameColumn {
-    margin-top: -10px;
-  }
-
-  tr:hover {
-    cursor: pointer;
-  }
-}
