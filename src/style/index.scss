@@ -10,12 +10,6 @@
 @import 'bootstrap_variables';
 @import 'bootstrap/assets/stylesheets/bootstrap';
 
-
-
-html {
-  //height: 100%;
-}
-
 body {
   margin-top: 50px !important;
   margin-bottom: -50px;
@@ -25,10 +19,6 @@ body {
   font-family: $body-font;
   font-size: 16px;
   height: 100%;
-}
-
-body.unlock {
-  background: $darkBg;
 }
 
 #app {

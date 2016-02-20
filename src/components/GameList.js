@@ -5,6 +5,7 @@ class GameList extends Component{
   render() {
     return (
       <div>
+
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <ul className="nav navbar-nav navbar-left">
@@ -19,16 +20,33 @@ class GameList extends Component{
           </div>
         </nav>
 
-        <div className="row">
-          <div className="col-md-12">
-            <div className="bg-success random-game-container">
-              <div className="row">
-                <div className="col-md-12 text-center">
-                  <button className="btn random-game-btn"><img src="./images/random_game.png" /></button>
-                </div>
-              </div>
-            </div>
+        <div className="jumbotron bg-success random-game-container">
+          <div className="col-md-12 text-center">
+            <button className="btn random-game-btn"><img src="./images/random_game.png" /></button>
+          </div>
+          <div className="col-md-12 list-header">
+            RUNNING
+          </div>
+        </div>
 
+        <div className="custom-row">
+
+          <div className="col-md-12">
+            <table className="table table-striped game-table">
+              <tbody>
+                <tr>
+                  <td><img src="./images/runner.png" className="game-type-icon" /></td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                </tr>
+                <tr>
+                  <td><img src="./images/runner.png"  className="game-type-icon" /></td>
+                  <td>Moe</td>
+                  <td>mary@example.com</td>
+                </tr>
+
+              </tbody>
+            </table>
           </div>
         </div>
 
