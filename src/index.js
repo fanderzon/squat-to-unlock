@@ -1,8 +1,11 @@
 import './style/index.scss';
 import React from 'react';
 import { render } from 'react-dom';
-import Main from './Main.js';
+import App from './components/App.js';
+import routes from './routes.js';
+import { Router, browserHistory } from 'react-router';
 
 render(
-  <Main />, document.getElementById( 'app' )
+  <Router routes={routes} history={browserHistory}/>,
+  document.getElementById( 'app' )
 );
