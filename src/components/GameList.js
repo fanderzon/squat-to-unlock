@@ -5,8 +5,17 @@ class GameList extends Component{
   render() {
     return (
       <div>
-        <p>It's a game list</p>
-        <Link to="/">Go back</Link>
+        <nav className="navbar navbar-default navbar-fixed-top">
+          <div className="container-fluid">
+            <ul className="nav navbar-nav">
+              <li className="pull-left"><a href="#">Profile</a></li>
+              <li className="navbar-text">Games</li>
+              <li><a href="#">
+                </a></li>
+              <li className="social pull-right"><a href="#">New game</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
     );
   }
