@@ -31,11 +31,11 @@ class NewGame extends Component{
                 </select>
               </div>
 
-              <div className="row">
-                <div className="form-group col-md-12" style={{ marginBottom: 0 + 'px' }}>
-                  <label className="col-md-12">Select charity</label>
-                </div>
+              <div className="form-group col-md-12" style={{ marginBottom: 0 + 'px' }}>
+                <label className="col-md-12">Select charity</label>
+              </div>
 
+              <div className="row">
                 <table className="table table-striped custom-table table-hover">
                   <tbody>
                     <tr>
