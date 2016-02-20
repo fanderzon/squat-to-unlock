@@ -18,6 +18,20 @@ class GameList extends Component{
             </ul>
           </div>
         </nav>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="bg-success random-game-container">
+              <div className="row">
+                <div className="col-md-12 text-center">
+                  <button className="btn random-game-btn"><img src="./images/random_game.png" /></button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     );
   }

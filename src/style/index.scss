@@ -1,5 +1,7 @@
 @import 'palette';
 @import 'pages/main';
+@import 'pages/game_list';
+
 @import 'general';
 @import 'typography';
 @import 'components/footer';
@@ -11,10 +13,12 @@
 
 
 html {
-  height: 100%;
+  //height: 100%;
 }
 
 body {
+  margin-top: 50px !important;
+  margin-bottom: -50px;
   margin: 0;
   padding: 0;
   background: $white;
