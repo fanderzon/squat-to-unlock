@@ -1,11 +1,16 @@
 @import 'palette';
+@import 'margins';
+@import 'input';
+@import 'typography';
+
+
 @import 'pages/main';
 @import 'pages/game_list';
+@import 'pages/new_game';
 
-@import 'general';
-@import 'typography';
 @import 'components/footer';
 @import 'components/navbar';
+@import 'components/table';
 
 @import 'bootstrap_variables';
 @import 'bootstrap/assets/stylesheets/bootstrap';
