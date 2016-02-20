@@ -1,0 +1,47 @@
+.random-game-container {
+  height: 180px;
+  width: 100%;
+}
+
+.random-game-btn {
+  width: 126px;
+  height: 126px;
+  background: none;
+  padding: 0 !important;
+
+  img {
+    width: 126px;
+    height: 126px;
+  }
+}
+
+.list-header {
+  color: $white;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.jumbotron {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  margin-bottom: 0px !important;
+}
+
+.game-type-icon {
+  width: 33px;
+  height: 23px;
+}
+
+.small-column {
+  max-width: 120px !important;
+}
+
+.game-table {
+  .usernameColumn {
+    margin-top: -10px;
+  }
+
+  tr:hover {
+    cursor: pointer;
+  }
+}

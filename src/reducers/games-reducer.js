@@ -6,7 +6,7 @@ function setState(state, newState) {
 
 export default function(state = {}, action) {
   switch (action.type) {
-    case 'SET_STATE':
+    case 'SET_GAMES_STATE':
       return setState(state, action.state);
   }
   return state;

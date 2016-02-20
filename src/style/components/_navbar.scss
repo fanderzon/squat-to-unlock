@@ -1,0 +1,13 @@
+// Fixed collapse issue
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-fixed-top {
+  box-shadow: 0px 0px 4px #000;
+}
+
+.navbar-text {
+  margin-left: 30px !important;
+  float: left;
+}

@@ -1,24 +1,24 @@
 @import 'palette';
-@import 'typography';
 @import 'pages/main';
-@import 'components/footer';
-@import 'general';
+@import 'pages/game_list';
 
-html {
-  height: 100%;
-}
+@import 'general';
+@import 'typography';
+@import 'components/footer';
+@import 'components/navbar';
+
+@import 'bootstrap_variables';
+@import 'bootstrap/assets/stylesheets/bootstrap';
 
 body {
+  margin-top: 50px !important;
+  margin-bottom: -50px;
   margin: 0;
   padding: 0;
   background: $white;
   font-family: $body-font;
   font-size: 16px;
   height: 100%;
-}
-
-body.unlock {
-  background: $darkBg;
 }
 
 #app {
