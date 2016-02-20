@@ -32,17 +32,31 @@ class GameList extends Component{
         <div className="custom-row">
 
           <div className="col-md-12">
-            <table className="table table-striped game-table">
+            <table className="table table-striped game-table table-hover">
               <tbody>
                 <tr>
-                  <td><img src="./images/runner.png" className="game-type-icon" /></td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
+                  <td className="small-column"><img src="./images/runner.png" className="game-type-icon" /></td>
+                  <td>
+                    <div className="usernameColumn">
+                      Username
+                      <h6>
+                        2 / 4 players, 100 meters
+                      </h6>
+                    </div>
+                  </td>
+                  <td className="text-right"><i className="fa fa-chevron-right"></i></td>
                 </tr>
                 <tr>
-                  <td><img src="./images/runner.png"  className="game-type-icon" /></td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
+                  <td className="small-column"><img src="./images/runner.png"  className="game-type-icon" /></td>
+                  <td>
+                    <div className="usernameColumn">
+                      Username
+                      <h6>
+                        2 / 4 players, 100 meters
+                      </h6>
+                    </div>
+                  </td>
+                  <td className="text-right"><i className="fa fa-chevron-right"></i></td>
                 </tr>
 
               </tbody>

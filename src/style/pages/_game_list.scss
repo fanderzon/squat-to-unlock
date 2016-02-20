@@ -31,3 +31,17 @@
   width: 33px;
   height: 23px;
 }
+
+.small-column {
+  max-width: 120px !important;
+}
+
+.game-table {
+  .usernameColumn {
+    margin-top: -10px;
+  }
+
+  tr:hover {
+    cursor: pointer;
+  }
+}
