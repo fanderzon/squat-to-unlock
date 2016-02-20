@@ -32,12 +32,12 @@ class GameList extends Component{
         </div>
 
         <div className="row">
-          <table className="table table-striped game-table table-hover">
+          <table className="table table-striped custom-table table-hover">
             <tbody>
               <tr>
                 <td className="small-column"><img src="./images/runner.png" className="game-type-icon" /></td>
                 <td>
-                  <div className="usernameColumn">
+                  <div className="tallColumn">
                     Username
                     <h6>
                       2 / 4 players, 100 meters
@@ -49,7 +49,7 @@ class GameList extends Component{
               <tr>
                 <td className="small-column"><img src="./images/runner.png"  className="game-type-icon" /></td>
                 <td>
-                  <div className="usernameColumn">
+                  <div className="tallColumn">
                     Username
                     <h6>
                       2 / 4 players, 100 meters
