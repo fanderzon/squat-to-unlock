@@ -6,12 +6,15 @@ import App from './components/App.js';
 import routes from './routes.js';
 import { Router, browserHistory } from 'react-router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 import { syncHistory, routeReducer } from 'react-router-redux';
 import gamesReducer from './reducers/games-reducer.js';
+import playersReducer from './reducers/players-reducer.js';
 
 const reducer = combineReducers({
   routing: routeReducer,
-  games: gamesReducer
+  games: gamesReducer,
+  players: playersReducer
 });
 
 const reduxRouterMiddleware = syncHistory(browserHistory);
@@ -22,7 +25,7 @@ const store = createStoreWithMiddleware(reducer);
 reduxRouterMiddleware.listenForReplays(store);
 
 store.dispatch({
-  type: 'SET_GAMES_STATE',
+  type: 'SET_GAMES',
   state: [
     {
       gameId: 1,
@@ -54,8 +57,23 @@ store.dispatch({
     }
   ]
 });
+store.dispatch({
+  type: 'SET_PLAYERS',
+  state: [
+    {
+      playerId: 3,
+      username: 'fanderzon'
+    },
+    {
+      playerId: 4,
+      username: 'planting'
+    }
+  ]
+});
 
 render(
-  <Router routes={routes} history={browserHistory}/>,
+  <Provider store={store}>
+    <Router routes={routes} history={browserHistory}/>
+  </Provider>,
   document.getElementById( 'app' )
 );
