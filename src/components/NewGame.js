@@ -32,7 +32,7 @@ class NewGame extends Component{
               </div>
 
               <div className="form-group col-md-12" style={{ marginBottom: 0 + 'px' }}>
-                <label className="col-md-12">Select charity</label>
+                <label className="">Select charity</label>
               </div>
 
               <div className="row">
@@ -75,8 +75,8 @@ class NewGame extends Component{
                 </table>
               </div>
 
-              <div className="form-group col-md-12">
-                <label>Donation to winning charity (optional)</label>
+              <div className="form-group col-md-12" style={{ marginBottom: 100 + 'px' }}>
+                <label>Donation to winning charity (optional after race)</label>
                 <select className="form-control col-md-12">
                   <option value="1">1 dollar</option>
                   <option value="5">5 dollar</option>
@@ -84,6 +84,16 @@ class NewGame extends Component{
                   <option value="100">100 dollar</option>
                 </select>
               </div>
+
+              <Link to="/games">
+                <div className="row footer bg-success new-game-footer">
+                  <div className="col-md-12 text-center">
+                    <p className="new-game-footer-text">
+                      Create game
+                    </p>
+                  </div>
+                </div>
+              </Link>
 
 
             </form>
