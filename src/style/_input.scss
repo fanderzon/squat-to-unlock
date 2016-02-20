@@ -3,3 +3,11 @@ label {
   color: #989DAD;
   margin-bottom: 20px !important;
 }
+
+.radio input[type="radio"], .radio-inline input[type="radio"] {
+  margin-left: -8px !important;
+}
+
+.radio-inline {
+  padding-left: 0 !important;
+}
