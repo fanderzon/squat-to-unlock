@@ -3,8 +3,9 @@
 @import 'pages/main';
 @import 'components/footer';
 @import 'components/navbar';
-
 @import 'general';
+@import 'bootstrap_variables';
+@import 'bootstrap/assets/stylesheets/bootstrap';
 
 html {
   height: 100%;
