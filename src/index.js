@@ -7,6 +7,7 @@ import routes from './routes.js';
 import { Router, browserHistory } from 'react-router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import io from 'socket.io-client';
 import { syncHistory, routeReducer } from 'react-router-redux';
 import gamesReducer from './reducers/games-reducer.js';
 import playersReducer from './reducers/players-reducer.js';
@@ -70,6 +71,8 @@ store.dispatch({
     }
   ]
 });
+
+const socket = io(`${location.protocol}//${location.hostname}:8090`);
 
 render(
   <Provider store={store}>
