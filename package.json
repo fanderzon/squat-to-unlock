@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --progress",
-    "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress"
+    "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress",
+    "server": "forever ./server/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,10 @@
   "homepage": "https://bitbucket.org/fanderzon/react-testing#readme",
   "dependencies": {
     "express": "4.13.4",
+    "forever": "0.15.1",
     "immutable": "3.7.6",
     "json-loader": "0.5.4",
+    "path": "0.12.7",
     "react": "0.14.7",
     "react-dom": "0.14.7",
     "react-redux": "4.4.0",

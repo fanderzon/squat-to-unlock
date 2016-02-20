@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -22,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass", "postcss"]
+        loader: ExtractTextPlugin.extract("style", "css!sass!postcss")
       }
     ]
   },
@@ -30,7 +31,8 @@ module.exports = {
     require('autoprefixer')
   ],
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin("style.css")
   ],
 
   devServer: {
