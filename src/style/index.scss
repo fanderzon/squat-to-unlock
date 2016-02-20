@@ -1,8 +1,26 @@
+@import 'palette';
+@import 'typography';
+@import 'pages/main';
+@import 'components/footer';
+@import 'general';
+
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: yellow;
+  background: $white;
+  font-family: $body-font;
+  font-size: 16px;
+  height: 100%;
 }
+
+body.unlock {
+  background: $darkBg;
+}
+
 #app {
-  display: flex;
+
 }
