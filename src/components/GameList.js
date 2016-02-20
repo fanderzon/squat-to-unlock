@@ -20,48 +20,47 @@ class GameList extends Component{
           </div>
         </nav>
 
-        <div className="jumbotron bg-success random-game-container">
-          <div className="col-md-12 text-center">
-            <button className="btn random-game-btn"><img src="./images/random_game.png" /></button>
-          </div>
-          <div className="col-md-12 list-header">
-            RUNNING
+        <div className="row">
+          <div className="jumbotron bg-success">
+            <div className="col-md-12 text-center">
+              <button className="btn random-game-btn"><img src="./images/random_game.png" /></button>
+            </div>
+            <div className="list-header">
+              RUNNING
+            </div>
           </div>
         </div>
 
-        <div className="custom-row">
+        <div className="row">
+          <table className="table table-striped game-table table-hover">
+            <tbody>
+              <tr>
+                <td className="small-column"><img src="./images/runner.png" className="game-type-icon" /></td>
+                <td>
+                  <div className="usernameColumn">
+                    Username
+                    <h6>
+                      2 / 4 players, 100 meters
+                    </h6>
+                  </div>
+                </td>
+                <td className="text-right"><i className="fa fa-chevron-right"></i></td>
+              </tr>
+              <tr>
+                <td className="small-column"><img src="./images/runner.png"  className="game-type-icon" /></td>
+                <td>
+                  <div className="usernameColumn">
+                    Username
+                    <h6>
+                      2 / 4 players, 100 meters
+                    </h6>
+                  </div>
+                </td>
+                <td className="text-right"><i className="fa fa-chevron-right"></i></td>
+              </tr>
 
-          <div className="col-md-12">
-            <table className="table table-striped game-table table-hover">
-              <tbody>
-                <tr>
-                  <td className="small-column"><img src="./images/runner.png" className="game-type-icon" /></td>
-                  <td>
-                    <div className="usernameColumn">
-                      Username
-                      <h6>
-                        2 / 4 players, 100 meters
-                      </h6>
-                    </div>
-                  </td>
-                  <td className="text-right"><i className="fa fa-chevron-right"></i></td>
-                </tr>
-                <tr>
-                  <td className="small-column"><img src="./images/runner.png"  className="game-type-icon" /></td>
-                  <td>
-                    <div className="usernameColumn">
-                      Username
-                      <h6>
-                        2 / 4 players, 100 meters
-                      </h6>
-                    </div>
-                  </td>
-                  <td className="text-right"><i className="fa fa-chevron-right"></i></td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
+            </tbody>
+          </table>
         </div>
 
       </div>
