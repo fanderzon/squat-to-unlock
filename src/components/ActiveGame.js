@@ -1,7 +1,26 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import { Button, Modal, OverlayTrigger, Popover } from 'react-bootstrap';
 
 class ActiveGame extends Component{
+
+  constructor(props) {
+    super(props);
+    this.close = this.close.bind( this );
+    this.close = this.close.bind( this );
+    this.state = {
+        showModal: true
+    };
+  }
+
+  close() {
+    this.setState({ showModal: false });
+  }
+
+  open() {
+    this.setState({ showModal: true });
+  }
+
   render() {
     return (
       <div>
@@ -13,6 +32,14 @@ class ActiveGame extends Component{
 
         <div className="row">
           <div className="wrapper">
+
+            <Button
+              bsStyle="primary"
+              bsSize="large"
+              onClick={this.open}
+              >
+              Launch demo modal
+            </Button>
             <div className="col-md-3 col-sm-3 col-xs-3 track" id="field_1">
               <div className="row runner" id="runner_1">
                 <div className="col-md-12">
@@ -66,7 +93,31 @@ class ActiveGame extends Component{
             </div>
           </div>
         </div>
+
+        <Modal show={this.state.showModal} backdrop="static" onHide={this.close}>
+          <Modal.Header>
+            <Modal.Title><h3>Waiting for player(s)</h3></Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>To play you hold your phone in front of you - and then run as fast as you can! The first player to cross the finish line wins fame and glory, for themselves and their charity.</p>
+            <p>
+              Invite players to join the game
+            </p>
+            <p className="text-center">
+              <button className="btn social-btn"><img src="./images/Twitter.png" /></button>
+              <button className="btn social-btn"><img src="./images/Facebook.png" /></button>
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <div className="text-center">
+              <Button bsStyle="primary" bsSize="lg" onClick={this.close}>Start race</Button>
+              <Button bsStyle="default" bsSize="lg" onClick={this.close}>Leave game</Button>
+            </div>
+          </Modal.Footer>
+        </Modal>
       </div>
+
+
     );
   }
 }
