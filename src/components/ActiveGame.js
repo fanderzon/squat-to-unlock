@@ -101,7 +101,7 @@ class ActiveGame extends Component{
           <Modal.Body>
             <p>To play you hold your phone in front of you - and then run as fast as you can! The first player to cross the finish line wins fame and glory, for themselves and their charity.</p>
             <p>
-              Invite players to join the game
+              Invite players to join the game:
             </p>
             <p className="text-center">
               <button className="btn social-btn"><img src="./images/Twitter.png" /></button>
