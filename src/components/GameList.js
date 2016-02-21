@@ -1,9 +1,40 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+
+function filterOwnGames(games, user) {
+  return games.filter(function( game ) {
+    return
+  });
+}
+
+const GameItem = (props) => {
+
+  const username = props.players.reduce(
+    (prev, current) => current.playerId === props.game.players[0] ? prev + current.username : prev,
+    ''
+  );
+  const noPlayers = props.game.players && props.game.players.length;
+  const icon = props.game.type === 'running' ? './images/runner.png' : './images/squat-icon.png';
+  return (
+    <tr>
+      <td className="small-column"><img src={icon} className="game-type-icon" /></td>
+      <td>
+        <div className="tallColumn">
+          {username}
+          <h6>
+            {noPlayers} / 4 players, 100 meters
+          </h6>
+        </div>
+      </td>
+      <td className="text-right"><i className="fa fa-chevron-right"></i></td>
+    </tr>
+  );
+};
 
 class GameList extends Component{
   render() {
-    return (
+    return (      
       <div>
 
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -36,30 +67,10 @@ class GameList extends Component{
         <div className="row">
           <table className="table table-striped custom-table table-hover">
             <tbody>
-              <tr>
-                <td className="small-column"><img src="./images/runner.png" className="game-type-icon" /></td>
-                <td>
-                  <div className="tallColumn">
-                    Username
-                    <h6>
-                      2 / 4 players, 100 meters
-                    </h6>
-                  </div>
-                </td>
-                <td className="text-right"><i className="fa fa-chevron-right"></i></td>
-              </tr>
-              <tr>
-                <td className="small-column"><img src="./images/runner.png"  className="game-type-icon" /></td>
-                <td>
-                  <div className="tallColumn">
-                    Username
-                    <h6>
-                      2 / 4 players, 100 meters
-                    </h6>
-                  </div>
-                </td>
-                <td className="text-right"><i className="fa fa-chevron-right"></i></td>
-              </tr>
+
+              {Array.isArray(this.props.games) && this.props.games.map(function( game, i ) {
+                  return <GameItem key={i} game={game} players={this.props.players}  />
+              }.bind(this))}
 
             </tbody>
           </table>
@@ -70,4 +81,14 @@ class GameList extends Component{
   }
 }
 
-export default GameList;
+function mapStateToProps(state) {
+  return {
+    games: state.games,
+    players: state.players,
+    user: state.user
+  };
+}
+
+const ConnectedGameList = connect(mapStateToProps)(GameList);
+
+export default ConnectedGameList;
