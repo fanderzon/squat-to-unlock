@@ -38,7 +38,7 @@ class FinishedGame extends Component{
                 </a>
               </p>
               <p class="help-block text-muted">
-                Total pot if everyone donates: $6
+                Minimum pot if everyone donates: $6
               </p>
             </div>
           </div>
