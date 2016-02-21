@@ -24,3 +24,11 @@ h6 {
   margin-bottom: 0px !important;
   font-weight: 300 !important;
 }
+
+a.blue-link {
+  color: $blue;
+}
+
+a.blue-link:hover {
+  color: $darkBlue;
+}

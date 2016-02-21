@@ -19,7 +19,11 @@ class Credit extends Component{
 
           <div className="col-md-12">
 
+
             <div className="col-md-12 m-t-3">
+              <p>
+                Squat to unlock is a fitness game where you challenge people and friends – for good causes.  It was made during the <a href="https://hacksummit.org/" className="blue-link" target="blank">hack.summit() hackathon</a>.
+              </p>
               <label>Project made my</label>
 
             </div>
