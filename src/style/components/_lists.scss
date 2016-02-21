@@ -1,0 +1,11 @@
+ul {
+  li {
+    a {
+      color: $blue;
+    }
+
+    a:hover {
+      color: $darkBlue;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import NewGame from './components/NewGame.js';
 import Signup from './components/Signup.js';
 import ActiveGame from './components/ActiveGame.js';
 import FinishedGame from './components/FinishedGame.js';
+import Credit from './components/Credit.js';
 
 module.exports = (
   <Route path="/" component={App}>
@@ -16,5 +17,6 @@ module.exports = (
     <Route path="/game" component={ActiveGame}></Route>
     <Route path="/finished_game" component={FinishedGame}></Route>
     <Route path="/signup" component={Signup}></Route>
+    <Route path="/info" component={Credit}></Route>
   </Route>
 )
