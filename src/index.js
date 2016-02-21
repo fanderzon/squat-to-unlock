@@ -10,10 +10,31 @@ import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import { syncHistory, routeReducer } from 'react-router-redux';
 import { gamesReducer, playersReducer, userReducer } from './reducers/reducers.js';
-import { setGames, setPlayers } from './action-creators.js';
+import { setGames, setPlayers, setGuid } from './action-creators.js';
 import remoteActionMiddleware from './remote-action-middleware.js';
+import createSagaMiddleware from 'redux-saga';
+import sagas from './sagas.js';
+import { ClientDb } from './client-db.js';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
+const clientDb = new ClientDb( socket );
+clientDb.send(
+  'createUser',
+  {
+    username: 'Fredde Granberg',
+    avatar: 'gubbe.png'
+  },
+  function( data ) {
+    console.log( 'created user', data );
+    clientDb.send(
+      'getUser',
+      data.generated_keys[0],
+      function( user ) {
+        console.log( 'retrieved user record', user );
+      }
+    )
+  }
+);
 
 const reducer = combineReducers({
   routing: routeReducer,
@@ -23,7 +44,10 @@ const reducer = combineReducers({
 });
 
 const reduxRouterMiddleware = syncHistory(browserHistory);
-const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware, remoteActionMiddleware(socket))(createStore);
+const createStoreWithMiddleware = applyMiddleware(
+  reduxRouterMiddleware,
+  remoteActionMiddleware(socket)
+)(createStore);
 
 const store = createStoreWithMiddleware(reducer);
 
@@ -80,6 +104,10 @@ reduxRouterMiddleware.listenForReplays(store);
 socket.on('state', state => {
   store.dispatch( setGames(state.games) );
   store.dispatch( setPlayers(state.players) );
+});
+
+socket.on('connected', id => {
+  console.log('connected id', id);
 });
 
 render(

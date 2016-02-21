@@ -41,5 +41,10 @@ module.exports = {
     historyApiFallback: true,
     inline: true,
     hot: true
-  }
+  },
+  node: {
+      net: 'empty',
+      tls: 'empty',
+      dns: 'empty'
+    }
 }

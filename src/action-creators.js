@@ -16,6 +16,13 @@ export function setPlayers( state ) {
   }
 }
 
+export function setGuid( state ) {
+  return {
+    type: SET_PLAYERS,
+    state
+  }
+}
+
 export function createPlayer( username, avatar ) {
   console.log('createPlayer action creator', username, avatar);
   return {
