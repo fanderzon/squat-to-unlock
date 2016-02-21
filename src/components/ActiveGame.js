@@ -110,8 +110,16 @@ class ActiveGame extends Component{
           </Modal.Body>
           <Modal.Footer>
             <div className="text-center">
-              <Button bsStyle="primary" bsSize="lg" onClick={this.close}>Start race</Button>
-              <Button bsStyle="default" bsSize="lg" onClick={this.close}>Leave game</Button>
+              <ul className="list-inline">
+                <li>
+                  <Button bsStyle="primary" bsSize="lg" onClick={this.close}>Start race</Button>
+                </li>
+                <li>
+                  <Link to="/finished_game">
+                    <Button bsStyle="default" bsSize="lg">Leave game</Button>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </Modal.Footer>
         </Modal>
