@@ -29,3 +29,7 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+rethinkdb_data/4fd1e293-2748-490e-8a43-bd9d66dd5c98
+rethinkdb_data/923e9f0a-20b8-4d23-8765-33785f7519ae
+rethinkdb_data/log_file
+rethinkdb_data/metadata
