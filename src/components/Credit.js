@@ -65,6 +65,15 @@ class Credit extends Component{
               <li>
                 <a href="https://getbootstrap.com/">react-bootstrap</a>
               </li>
+              <li>
+                <a href="https://github.com/reactjs/redux">Redux</a>
+              </li>
+              <li>
+                <a href="https://www.rethinkdb.com/">RethinkDb</a>
+              </li>
+              <li>
+                <a href="http://expressjs.com/">Express</a>
+              </li>
             </ul>
 
             <div className="col-md-12 m-t-3">
