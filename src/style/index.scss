@@ -1,8 +1,35 @@
+@import 'palette';
+@import 'margins';
+@import 'input';
+@import 'typography';
+
+@import 'pages/main';
+@import 'pages/game_list';
+@import 'pages/new_game';
+@import 'pages/signup';
+@import 'pages/active_game';
+@import 'pages/finished_game';
+
+@import 'components/footer';
+@import 'components/navbar';
+@import 'components/table';
+@import 'components/lists';
+
+
+@import 'bootstrap_variables';
+@import 'bootstrap/assets/stylesheets/bootstrap';
+
 body {
+  margin-top: 50px !important;
+  margin-bottom: -50px;
   margin: 0;
   padding: 0;
-  background: yellow;
+  background: $white;
+  font-family: $body-font;
+  font-size: 16px;
+  height: 100%;
 }
+
 #app {
-  display: flex;
+
 }

@@ -1,0 +1,30 @@
+.random-game-btn {
+  width: 126px;
+  height: 126px;
+  background: none;
+  padding: 0 !important;
+  margin-top: 10px;
+
+  img {
+    width: 126px;
+    height: 126px;
+  }
+}
+
+.list-header {
+  color: $white;
+  font-size: 12px;
+  margin-top: 20px !important;
+}
+
+.jumbotron {
+  padding-top: 15px !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 0px !important;
+  border-radius: 0 !important;
+}
+
+.game-type-icon {
+  width: 33px;
+  height: 23px;
+}
