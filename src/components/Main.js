@@ -1,8 +1,20 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import * as actionCreators from '../action-creators.js';
+import { connect } from 'react-redux';;
 
+class Main extends Component {
 
-class Main extends Component{
+  constructor() {
+    super();
+    console.log( 'mainMount', listenForSquat );
+    this.squatListener = listenForSquat( () => this.props.goTo('/signup') );
+  }
+
+  componentWillUnmount() {
+    this.squatListener();
+  }
+
   render() {
     return (
       <div>
@@ -28,4 +40,9 @@ class Main extends Component{
   }
 }
 
-export default Main;
+const ConnectedMain = connect(
+  function() { return {}; },
+  actionCreators
+)(Main);
+
+export default ConnectedMain;

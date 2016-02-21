@@ -2,6 +2,12 @@ export const CREATE_USER = 'CREATE_USER';
 export const SET_GAMES = 'SET_GAMES';
 export const SET_PLAYERS = 'SET_PLAYERS';
 export const SET_GUID = 'SET_GUID';
+import { routeActions } from 'react-router-redux';
+
+export function goTo( path ) {
+  console.log( 'goTo', path );
+  return routeActions.push( path );
+}
 
 export function setGames( state ) {
   return {

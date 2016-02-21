@@ -5,6 +5,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Squat to Unlock</title>
+    <script>
+      function listenForSquat( callback ) {
+        console.log( 'listenForSquat' );
+        function motionHandler( event ) {
+          // Sense motion
+          if (Math.abs(event.acceleration.y) > 3) {
+            callback();
+            window.removeEventListener('devicemotion', motionHandler);
+          }
+        }
+
+        window.addEventListener('devicemotion', motionHandler);
+
+        return function cancel() {
+          window.removeEventListener('devicemotion', motionHandler);
+        }
+      }
+    </script>
   </head>
   <body>
     <div class="container-fluid">
