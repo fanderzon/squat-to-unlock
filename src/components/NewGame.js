@@ -85,7 +85,7 @@ class NewGame extends Component{
                 </select>
               </div>
 
-              <Link to="/game/1">
+              <Link to="/game">
                 <div className="row footer bg-success new-game-footer">
                   <div className="col-md-12 text-center">
                     <p className="new-game-footer-text">
@@ -94,8 +94,6 @@ class NewGame extends Component{
                   </div>
                 </div>
               </Link>
-
-
             </form>
           </div>
 

@@ -1,0 +1,38 @@
+.wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+
+.track {
+  padding-top: 50px;
+  margin-bottom: -100px;
+  background: #E2896B;
+  height: 100%;
+  border: 2px solid white;
+  text-align: center;
+  color: white;
+}
+
+.runner {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}
+
+.social-btn {
+  width: 51px;
+  height: 51px;
+  background: none;
+  padding: 0 !important;
+  margin: 10px;
+
+  img {
+    width: 51px;
+    height: 51px;
+  }
+}
