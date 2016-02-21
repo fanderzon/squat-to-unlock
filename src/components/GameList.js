@@ -40,7 +40,9 @@ class GameList extends Component{
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <ul className="nav navbar-nav navbar-left">
-              <li><a href="#"><i className="fa fa-bars"></i></a></li>
+              <li>
+                <Link to="/info"><i className="fa fa-info"></i></Link>
+              </li>
             </ul>
             <p className="navbar-text">Games</p>
             <ul className="nav navbar-nav navbar-right pull-right">

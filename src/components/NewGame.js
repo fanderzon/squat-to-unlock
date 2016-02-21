@@ -32,19 +32,18 @@ class NewGame extends Component{
               </div>
 
               <div className="form-group col-md-12" style={{ marginBottom: 0 + 'px' }}>
-                <label className="">Select charity</label>
+                <label className="">Select coding non profit to run for</label>
               </div>
 
               <div className="row">
                 <table className="table table-striped custom-table table-hover">
                   <tbody>
                     <tr>
-                      <td><img src="./images/amnesty.png" className="charity-icon" /></td>
                       <td>
                         <div className="tallColumn">
-                          Amnesty
+                          Girls who code
                           <h6>
-                            Human rights
+                            Working to close the gender gap in the technology and engineering sectors
                           </h6>
                         </div>
                       </td>
@@ -55,12 +54,26 @@ class NewGame extends Component{
                       </td>
                     </tr>
                     <tr>
-                      <td><img src="./images/wwf.png"  className="charity-icon" /></td>
                       <td>
                         <div className="tallColumn">
-                          WWF
+                          Code for America
                           <h6>
-                            Wildlife conservation and endangered species
+                            Making government services simple, effective, and easy to use.
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div className="tallColumn">
+                          Coder Dojo
+                          <h6>
+                            The global network of free computer programming clubs for young people.
                           </h6>
                         </div>
                       </td>
@@ -71,12 +84,125 @@ class NewGame extends Component{
                       </td>
                     </tr>
 
+                    <tr>
+                      <td>
+                        <div className="tallColumn">
+                          Black Girls Code
+                          <h6>
+                            Working to increase the number of women of color in the digital space.
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div className="tallColumn">
+                          Women who code
+                          <h6>
+                            Dedicated to inspiring women to excel in technology careers.
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div className="tallColumn">
+                          Code 2040
+                          <h6>
+                            CODE2040 creates access, awareness, and opportunities for top Black and Latino/a engineering talent to ensure their leadership in the innovation economy.
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div className="tallColumn">
+                          Bridge Foundry
+                          <h6>
+                            We empower people with technology through teaching and facilitating access, enlarging the community of people who give back and teach others.
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div className="tallColumn">
+                          RAILS GIRLS SUMMER OF CODE
+                          <h6>
+                            Aim to foster diversity in Open Source since 2013
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div className="tallColumn">
+                          Code Club
+                          <h6>
+                            A nationwide network of volunteer-led after school coding clubs for children aged 9-11
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div className="tallColumn">
+                          Ada
+                          <h6>
+                            Reinventing software developer training. Addressing diversity in Seattle's tech community.
+                          </h6>
+                        </div>
+                      </td>
+                      <td className="text-right">
+                        <div className="radio">
+                          <input type="radio" name="charityradio"></input>
+                        </div>
+                      </td>
+                    </tr>
+
+
                   </tbody>
                 </table>
               </div>
 
               <div className="form-group col-md-12" style={{ marginBottom: 100 + 'px' }}>
-                <label>Donation to winning charity (optional after race)</label>
+                <label>Donation to winning non profit (optional and can be changed after the race)</label>
                 <select className="form-control col-md-12">
                   <option value="1">1 dollar</option>
                   <option value="5">5 dollar</option>
