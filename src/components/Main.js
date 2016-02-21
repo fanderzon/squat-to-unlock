@@ -1,21 +1,18 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import * as actionCreators from '../action-creators.js';
+import { connect } from 'react-redux';;
 
+class Main extends Component {
 
-class Main extends Component{
-
-  init() {
-    this.setInterval(this.animateIcon, 1400);
+  constructor() {
+    super();
+    console.log( 'mainMount', listenForSquat );
+    this.squatListener = listenForSquat( () => this.props.goTo('/signup') );
   }
 
-  animateIcon(){
-    var images = $('#squat_icon img'),
-        now    = images.filter(':visible'),
-        next   = now.next().length ? now.next() : images.first(),
-        speed  = 1000;
-
-    now.fadeOut(speed);
-    next.fadeIn(speed);
+  componentWillUnmount() {
+    this.squatListener();
   }
 
   render() {
@@ -45,4 +42,9 @@ class Main extends Component{
   }
 }
 
-export default Main;
+const ConnectedMain = connect(
+  function() { return {}; },
+  actionCreators
+)(Main);
+
+export default ConnectedMain;
