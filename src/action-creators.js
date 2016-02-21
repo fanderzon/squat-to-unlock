@@ -1,6 +1,7 @@
-export const CREATE_PLAYER = 'CREATE_PLAYER';
+export const CREATE_USER = 'CREATE_USER';
 export const SET_GAMES = 'SET_GAMES';
 export const SET_PLAYERS = 'SET_PLAYERS';
+export const SET_GUID = 'SET_GUID';
 
 export function setGames( state ) {
   return {
@@ -23,10 +24,10 @@ export function setGuid( state ) {
   }
 }
 
-export function createPlayer( username, avatar ) {
+export function createUser( username, avatar ) {
   console.log('createPlayer action creator', username, avatar);
   return {
-    type: CREATE_PLAYER,
+    type: CREATE_USER,
     meta: {
       remote: true
     },

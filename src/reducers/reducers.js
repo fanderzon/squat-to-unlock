@@ -17,20 +17,18 @@ export function playersReducer(state = [], action = {}) {
 
 export function userReducer( state = {}, action ) {
   switch (action.type) {
-    case 'CREATE_PLAYER':
-    console.log('userReducer CREATE_PLAYER', action);
+    case 'CREATE_USER':
       return {
         username: action.username,
         avatar: action.avatar
       };
-  }
-  return state;
-}
-
-export function clientDbReducer( state = {}, action ) {
-  switch (action.type) {
-    case 'SET_CLIENT_DB':
-      return action.clientDb;
+    case 'CREATE_USER_SUCCEEDED':
+    console.log('CREATE_USER_SUCCEEDED');
+      return {
+        id: action.payload.id,
+        username: action.payload.username,
+        avatar: action.payload.avatar
+      }
   }
   return state;
 }

@@ -34,7 +34,7 @@ const GameItem = (props) => {
 
 class GameList extends Component{
   render() {
-    return (
+    return (      
       <div>
 
         <nav className="navbar navbar-default navbar-fixed-top">

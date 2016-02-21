@@ -1,4 +1,5 @@
 import objectAssign from 'object-assign';
+import { Promise } from 'es6-promise';
 
 export class ClientDb {
   constructor( socket ) {
@@ -23,17 +24,21 @@ export class ClientDb {
     }
   }
 
-  send( method, payload, callback ) {
+  send( method, payload ) {
+    console.log( 'client send', arguments );
     const requestId = this.requestId;
 
-    this.addCallback( requestId, callback );
-    this.socket.emit(
-      'db', {
-        requestId,
-        method,
-        payload
-      }
-    );
+    return new Promise( ( resolve, reject ) => {
+      this.addCallback( requestId, resolve );
+
+      this.socket.emit(
+        'db', {
+          requestId,
+          method,
+          payload
+        }
+      );
+    });
   }
 
   receive( request ) {
@@ -45,14 +50,11 @@ export class ClientDb {
     }
   }
 
-  createUser( username, avatar, callback ) {
+  createUser( user = { username: '', avatar: '' } ) {
+    console.log('createUser', user);
     return this.send(
       'createUser',
-      {
-        username,
-        avatar
-      },
-      callback
+      user
     );
   }
 }

@@ -67,17 +67,16 @@ class Signup extends Component {
                 </div>
               </div>
 
-              <Link to="/games">
+
                 <div className="row footer bg-success new-game-footer">
                   <div className="col-md-12 text-center">
                     <p className="new-game-footer-text" onClick={() => {
-                      return this.props.createPlayer( this.state.username, this.state.avatar );
+                      return this.props.createUser( this.state.username, this.state.avatar );
                     }}>
                       Get started
                     </p>
                   </div>
                 </div>
-              </Link>
 
 
             </form>
@@ -93,9 +92,7 @@ class Signup extends Component {
 
 export const SignupContainer = connect(
   function() {
-    return {
-      clientDb: state.clientDb
-    };
+    return {};
   },
   actionCreators
 )(Signup);

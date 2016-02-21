@@ -1,4 +1,5 @@
 import objectAssign from 'object-assign';
+import { Promise } from 'es6-promise';
 
 export class SocketDb {
   constructor( socket, rethinkdb ) {
@@ -24,17 +25,20 @@ export class SocketDb {
     }
   }
 
-  send( method, payload, callback ) {
+  send( method, payload ) {
     const requestId = this.requestId;
 
-    addCallback( requestId, callback );
-    this.socket.emit(
-      'db', {
-        requestId,
-        method,
-        payload
-      }
-    );
+    return new Promise( ( resolve, reject ) => {
+      this.addCallback( requestId, resolve );
+
+      this.socket.emit(
+        'db', {
+          requestId,
+          method,
+          payload
+        }
+      );
+    });
   }
 
   sendCallback( receivedId, payload ) {
@@ -52,44 +56,47 @@ export class SocketDb {
 
     if (request.method && this[request.method]) {
       this[request.method](
-        request.payload,
-        ( payload ) => {
-          this.sendCallback( request.requestId, payload )
-        }
-      );
+        request.payload
+      ).
+        then( payload => {
+          this.sendCallback( request.requestId, payload );
+        });
     }
   }
 
-  createUser( user = { username: '', avatar: '' }, callback ) {
-    console.log('creating new user', user);
-    this.rethinkdb.r.
-      table('users').
-      insert(user).
-      run(
-        this.rethinkdb.connection,
-        ( err, result ) => {
-          if (err) throw err;
+  createUser( user = { username: '', avatar: '' } ) {
 
-          if (result && result.generated_keys && result.generated_keys[0] && callback) {
-            this.getUser( result.generated_keys[0], callback );
+    return new Promise( ( resolve, reject ) => {
+      this.rethinkdb.r.
+        table('users').
+        insert(user).
+        run(
+          this.rethinkdb.connection,
+          ( err, result ) => {
+            if (err) reject( err );
+
+            if (result && result.generated_keys && result.generated_keys[0] ) {
+              this.getUser( result.generated_keys[0] ).then(( result ) => {
+                resolve(result);
+              });
+            }
           }
-        }
-      );
+        );
+    });
   }
 
-  getUser( id, callback ) {
-    this.rethinkdb.r.
-      table('users').
-      get( id ).
-      run(
-        this.rethinkdb.connection,
-        ( err, result ) => {
-          console.log('getUser ', result);
-          if (err) throw err;
-          if (callback) {
-            callback( result );
+  getUser( id ) {
+    return new Promise(( resolve, reject ) => {
+      this.rethinkdb.r.
+        table('users').
+        get( id ).
+        run(
+          this.rethinkdb.connection,
+          ( err, result ) => {
+            if (err) reject( err );
+            resolve( result );
           }
-        }
-      );
+        );
+    });
   }
 }
