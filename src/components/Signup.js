@@ -36,6 +36,7 @@ class Signup extends Component {
   }
 
   render() {
+
     return (
       <div>
 
@@ -91,7 +92,11 @@ class Signup extends Component {
 
 
 export const SignupContainer = connect(
-  function() { return {}; },
+  function() {
+    return {
+      clientDb: state.clientDb
+    };
+  },
   actionCreators
 )(Signup);
 

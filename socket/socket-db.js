@@ -69,9 +69,9 @@ export class SocketDb {
         this.rethinkdb.connection,
         ( err, result ) => {
           if (err) throw err;
-          console.log(JSON.stringify(result, null, 2));
-          if (callback) {
-            callback( result );
+
+          if (result && result.generated_keys && result.generated_keys[0] && callback) {
+            this.getUser( result.generated_keys[0], callback );
           }
         }
       );

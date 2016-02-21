@@ -26,3 +26,11 @@ export function userReducer( state = {}, action ) {
   }
   return state;
 }
+
+export function clientDbReducer( state = {}, action ) {
+  switch (action.type) {
+    case 'SET_CLIENT_DB':
+      return action.clientDb;
+  }
+  return state;
+}

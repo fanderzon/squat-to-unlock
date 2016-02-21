@@ -44,4 +44,15 @@ export class ClientDb {
       this[request.method](request.payload);
     }
   }
+
+  createUser( username, avatar, callback ) {
+    return this.send(
+      'createUser',
+      {
+        username,
+        avatar
+      },
+      callback
+    );
+  }
 }
