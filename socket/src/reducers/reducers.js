@@ -20,7 +20,7 @@ export function gamesReducer( state = [], action ) {
 export function playersReducer( state = [], action ) {
   switch (action.type) {
     case 'CREATE_PLAYER':
-      return createPlayer( state, action.username );
+      return createPlayer( state, action.username, action.avatar );
   }
   return state;
 }

@@ -9,19 +9,19 @@ store.subscribe(function() {
 });
 
 store.dispatch({
-  type: 'ADD_PLAYER',
+  type: 'CREATE_PLAYER',
   username: 'banana'
 });
 store.dispatch({
-  type: 'ADD_PLAYER',
+  type: 'CREATE_PLAYER',
   username: 'penguin'
 });
 store.dispatch({
-  type: 'ADD_PLAYER',
+  type: 'CREATE_PLAYER',
   username: 'fanderzon'
 });
 store.dispatch({
-  type: 'ADD_PLAYER',
+  type: 'CREATE_PLAYER',
   username: 'planting'
 });
 
