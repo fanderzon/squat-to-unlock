@@ -4,7 +4,7 @@ export function getPlayerId() {
 }
 
 // FIXME: Very naive player handling with no validation
-export function addPlayer( state, username ) {
+export function createPlayer( state, username ) {
   return [
     ...state,
     {

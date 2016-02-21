@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 const GameItem = (props) => {
-console.log('GameItem', props);
 
   const username = props.players.reduce(
     (prev, current) => current.playerId === props.game.players[0] ? prev + current.username : prev,
@@ -29,8 +28,6 @@ console.log('GameItem', props);
 
 class GameList extends Component{
   render() {
-
-    console.log('render gamelist', this.props);
     return (
       <div>
 

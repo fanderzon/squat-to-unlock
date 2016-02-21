@@ -1,5 +1,5 @@
 import { setGames, createGame, joinGame, readyGame, startGame } from './games-logic.js';
-import { addPlayer } from './players-logic.js';
+import { createPlayer } from './players-logic.js';
 
 export function gamesReducer( state = [], action ) {
   switch (action.type) {
@@ -19,8 +19,8 @@ export function gamesReducer( state = [], action ) {
 
 export function playersReducer( state = [], action ) {
   switch (action.type) {
-    case 'ADD_PLAYER':
-      return addPlayer( state, action.username );
+    case 'CREATE_PLAYER':
+      return createPlayer( state, action.username );
   }
   return state;
 }

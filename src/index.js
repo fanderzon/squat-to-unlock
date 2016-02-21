@@ -9,16 +9,21 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import { syncHistory, routeReducer } from 'react-router-redux';
-import { gamesReducer, playersReducer } from './reducers/reducers.js';
+import { gamesReducer, playersReducer, userReducer } from './reducers/reducers.js';
+import { setGames, setPlayers } from './action-creators.js';
+import remoteActionMiddleware from './remote-action-middleware.js';
+
+const socket = io(`${location.protocol}//${location.hostname}:8090`);
 
 const reducer = combineReducers({
   routing: routeReducer,
   games: gamesReducer,
-  players: playersReducer
+  players: playersReducer,
+  user: userReducer
 });
 
 const reduxRouterMiddleware = syncHistory(browserHistory);
-const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware, remoteActionMiddleware(socket))(createStore);
 
 const store = createStoreWithMiddleware(reducer);
 
@@ -71,11 +76,10 @@ reduxRouterMiddleware.listenForReplays(store);
 //   ]
 // });
 
-const socket = io(`${location.protocol}//${location.hostname}:8090`);
+
 socket.on('state', state => {
-  console.log('received state', state);
-  store.dispatch({type: 'SET_GAMES', state: state.games });
-  store.dispatch({type: 'SET_PLAYERS', state: state.players});
+  store.dispatch( setGames(state.games) );
+  store.dispatch( setPlayers(state.players) );
 });
 
 render(
