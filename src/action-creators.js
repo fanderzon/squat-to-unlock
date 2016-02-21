@@ -2,6 +2,7 @@ export const CREATE_USER = 'CREATE_USER';
 export const SET_GAMES = 'SET_GAMES';
 export const SET_PLAYERS = 'SET_PLAYERS';
 export const SET_GUID = 'SET_GUID';
+export const CREATE_GAME = 'CREATE_GAME';
 import { routeActions } from 'react-router-redux';
 
 export function goTo( path ) {
@@ -39,5 +40,16 @@ export function createUser( username, avatar ) {
     },
     username,
     avatar
+  };
+}
+
+export function createGame( userId, gameOptions ) {
+  return {
+    type: CREATE_GAME,
+    meta: {
+      remote: true
+    },
+    userId,
+    gameOptions
   };
 }

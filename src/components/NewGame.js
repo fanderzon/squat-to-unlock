@@ -156,15 +156,21 @@ class NewGame extends Component{
                 </select>
               </div>
 
-              <Link to="/game">
-                <div className="row footer bg-success new-game-footer">
-                  <div className="col-md-12 text-center">
-                    <p className="new-game-footer-text">
-                      Create game
-                    </p>
-                  </div>
+              <div className="row footer bg-success new-game-footer">
+                <div className="col-md-12 text-center">
+                  <p className="new-game-footer-text" onClick={() => {
+                    return this.props.createGame( this.props.user.id, {
+                      type: 'running',
+                      mode: 'qty',
+                      target: this.state.target,
+                      charity: this.state.charity,
+                      dollars: this.state.dollars
+                    });
+                  }}>
+                    Create game
+                  </p>
                 </div>
-              </Link>
+              </div>
             </form>
           </div>
 
@@ -176,8 +182,8 @@ class NewGame extends Component{
 }
 
 const ConnectedNewGame = connect(
-  function() { return {
-
+  function( state ) { return {
+    user: state.user
   }; },
   actionCreators
 )(NewGame);

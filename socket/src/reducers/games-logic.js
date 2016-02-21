@@ -24,12 +24,14 @@ export function createGame(
     type,
     mode,
     target,
-    charity
+    charity,
+    dollars
   } = {
     type: 'running',
     mode: 'qty',
     target: 100,
-    charity: 'girls-who-code'
+    charity: 'girls-who-code',
+    dollars: 1
   }
 ) {
   const gameId = getGameId();
@@ -43,6 +45,7 @@ export function createGame(
       mode,
       target,
       charity,
+      dollars,
       players: [ userId ],
       status: 'pending',
       created: new Date(),
