@@ -6,6 +6,7 @@ export function gamesReducer( state = [], action ) {
     case 'SET_GAMES':
       return setGames( state, action.games );
     case 'CREATE_GAME':
+      console.log('CREATE_GAME', action);
       return createGame( state, action.userId, action.gameOptions );
     case 'JOIN_GAME':
       return joinGame( state, action.gameId, action.userId );
