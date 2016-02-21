@@ -16,7 +16,7 @@ class Signup extends Component{
 
           <div className="col-md-12">
             <p>
-              Squat to unlock is a fitness game where you challenge people and friends – for good causes.  It was made during the <a href="https://hacksummit.org/" className="blue-link" target="blank">hack.summit() hackathon</a>.
+              Squat to unlock is a fitness game where you challenge people and friends – for good causes.  It was made during the <a href="https://hacksummit.org/" className="blue-link" target="blank">hack.summit() hackathon</a>. Please note that the game only works on <b>mobile web</b> and not on desktops.
             </p>
 
             <form className="form-horizontal">
