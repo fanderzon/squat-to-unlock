@@ -12,11 +12,11 @@ import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import { syncHistory, routeReducer , routeActions } from 'react-router-redux';
 import { gamesReducer, playersReducer, userReducer, clientDbReducer } from './reducers/reducers.js';
-import { setGames, setPlayers, setGuid } from './action-creators.js';
+import { setGames, setPlayers, setGuid, goTo, addPlayer } from './action-creators.js';
 import remoteActionMiddleware from './remote-action-middleware.js';
-import { default as createSagaMiddleware, takeLatest } from 'redux-saga';
 import createEngine from 'redux-storage-engine-localStorage';
 import filter from 'redux-storage-decorator-filter';
+import { default as createSagaMiddleware, takeLatest } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { ClientDb } from './client-db.js';
 
@@ -40,7 +40,7 @@ const reduxRouterMiddleware = syncHistory(browserHistory);
 const createStoreWithMiddleware = applyMiddleware(
   reduxRouterMiddleware,
   storageMiddleware,
-  createSagaMiddleware( watchCreateUserSaga ),
+  createSagaMiddleware( watchCreateUserSaga, watchActiveGameSaga ),
   remoteActionMiddleware(socket)
 )(createStore);
 
@@ -62,24 +62,36 @@ socket.on('connected', id => {
   console.log('connected id', id);
 });
 
-function* watchUserCreateSaga() {
+function* watchCreateUserSaga() {
   yield* takeLatest('CREATE_USER', createUserSaga);
 }
 
 export function* createUserSaga(action) {
-  console.log('createUserSaga', action);
    try {
       const payload = yield call(clientDb.createUser.bind(clientDb), { username: action.username, avatar: action.avatar });
       console.log('pushing route action');
-      yield put(routeActions.push('/games'));
+      yield put(goTo('/games'));
       yield put({type: "CREATE_USER_SUCCEEDED", payload});
+      yield put(addPlayer( payload ))
    } catch (error) {
       yield put({type: "CREATE_USER_FAILED", error});
    }
 }
 
-function* watchCreateUserSaga() {
-  yield* takeLatest('CREATE_USER', createUserSaga);
+function* watchActiveGameSaga() {
+  yield* takeLatest('SET_GAMES', checkActiveGameSaga);
+}
+
+function* checkActiveGameSaga( action ) {
+  console.log('checkCreatedGameSaga', action, store.getState().user.id);
+  const activeGame = Array.isArray(action.state) && action.state.filter( game => {
+    return game.players.includes(store.getState().user.id) &&
+      ( game.status === 'pending' || game.status === 'ready' || game.status === 'started');
+  });
+  console.log('active game', activeGame);
+  if (activeGame.length > 0) {
+    yield put( goTo('/game/' + activeGame[0].gameHash) );
+  }
 }
 
 render(

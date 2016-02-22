@@ -14,7 +14,7 @@ module.exports = (
     <IndexRoute component={Main}/>
     <Route path="/games" component={GameList}></Route>
     <Route path="/new_game" component={NewGame}></Route>
-    <Route path="/game" component={ActiveGame}></Route>
+    <Route path="/game/:hash" component={ActiveGame}></Route>
     <Route path="/finished_game" component={FinishedGame}></Route>
     <Route path="/signup" component={Signup}></Route>
     <Route path="/info" component={Credit}></Route>

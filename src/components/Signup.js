@@ -23,6 +23,12 @@ class Signup extends Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.user && this.props.user.username) {
+      this.props.goTo('/games');
+    }
+  }
+
   onUsernameChanged( e ) {
     this.setState({
       username: e.currentTarget.value
@@ -49,6 +55,10 @@ class Signup extends Component {
         <div className="row m-t-3">
 
           <div className="col-md-12">
+
+            <p>
+              Squat to unlock is a fitness game where you challenge people and friends – for good causes. It was made during the hack.summit() hackathon. Please note that this game only works on <b>mobile web</b> and not desktop.
+            </p>
 
             <form className="form-horizontal">
 
@@ -91,8 +101,10 @@ class Signup extends Component {
 
 
 export const SignupContainer = connect(
-  function() {
-    return {};
+  function( state ) {
+    return {
+      user: state.user
+    };
   },
   actionCreators
 )(Signup);

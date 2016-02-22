@@ -23,11 +23,15 @@ export function createGame(
   {
     type,
     mode,
-    target
+    target,
+    charity,
+    dollars
   } = {
     type: 'running',
     mode: 'qty',
-    target: 50
+    target: 100,
+    charity: 'girls-who-code',
+    dollars: 1
   }
 ) {
   const gameId = getGameId();
@@ -37,9 +41,12 @@ export function createGame(
     {
       gameId: gameId,
       gameHash: getGameHash( gameId ),
+      createdBy: userId,
       type,
       mode,
       target,
+      charity,
+      dollars,
       players: [ userId ],
       status: 'pending',
       created: new Date(),
@@ -51,11 +58,11 @@ export function createGame(
   ];
 }
 
-export function joinGame( state, gameId, userId ) {
+export function joinGame( state, gameHash, userId ) {
   return state.map(function( game ) {
-    // Only add a player to the game with the matching gameId
+    // Only add a player to the game with the matching gameHash
     // Also, if the game is no longer waiting for players/pending don't add a player
-    if (game.gameId !== gameId || game.status !== 'pending') {
+    if (game.gameHash !== gameHash || game.status !== 'pending') {
       return game;
     }
 

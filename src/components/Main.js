@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 import * as actionCreators from '../action-creators.js';
-import { connect } from 'react-redux';;
+import { connect } from 'react-redux';
 
 class Main extends Component {
 
@@ -23,15 +23,22 @@ class Main extends Component {
           <div className="row">
             <div className="col-md-12">
               <div className="image-container">
-                <img src="./images/squat-icon.png" className="img-responsive center-block squat-icon" alt="Squat icon" />
+                <div id="cf">
+                  <img src="./images/squat-icon.gif" className="img-responsive center-block squat-icon" alt="Squat icon" />
+                </div>
               </div>
             </div>
           </div>
           <div className="row footer bg-dark">
             <div className="col-md-12 text-center">
-              <h5>
-                <Link to="/signup">Squat to unlock</Link>
-              </h5>
+              <Link to="/signup">
+                <h5 style={{ marginBottom: 0 + 'px' }}>
+                  Squat to unlock
+                </h5>
+                <h6 style={{ paddingBottom: 10 + 'px'}}>
+                  (while holding your phone in front of you)
+                </h6>
+              </Link>
             </div>
           </div>
         </div>

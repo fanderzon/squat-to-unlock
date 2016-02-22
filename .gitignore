@@ -32,3 +32,8 @@ jspm_packages
 rethinkdb_data
 rethinkdb_data/log_file
 rethinkdb_data/metadata
+src/components/Main.js.BACKUP.52519.js
+src/components/Main.js.BASE.52519.js
+src/components/Main.js.LOCAL.52519.js
+src/components/Main.js.REMOTE.52519.js
+src/components/Main.js.orig
