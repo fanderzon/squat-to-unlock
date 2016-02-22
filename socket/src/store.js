@@ -30,7 +30,7 @@ export default function makeStore() {
     }, 0);
 
     if (userScore + action.qty >= target) {
-      yield put({ type: 'FINISHED_GAME', game.gameId });
+      // game done
     }
   }
 
