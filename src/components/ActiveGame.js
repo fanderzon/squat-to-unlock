@@ -32,14 +32,6 @@ class ActiveGame extends Component{
 
         <div className="row">
           <div className="wrapper">
-
-            <Button
-              bsStyle="primary"
-              bsSize="large"
-              onClick={this.open}
-              >
-              Launch demo modal
-            </Button>
             <div className="col-md-3 col-sm-3 col-xs-3 track" id="field_1">
               <div className="row runner" id="runner_1">
                 <div className="col-md-12">
