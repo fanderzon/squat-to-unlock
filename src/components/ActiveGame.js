@@ -6,19 +6,27 @@ import * as actionCreators from '../action-creators.js';
 
 
 const PlayerTrack = (props) => {
-  const username = props.username || 'unknown';
-  const avatar = props.avatar || 'images/male_1.png';
-  const charity = props.charity || 'none';
+  const username = props.username || '';
+  const avatar = props.avatar || null;
+  const avatarImg = avatar ? (<img src={'/' + avatar} className="avatar" />) : '';
+  const charity = props.charity || '';
+  const playerState = username ? 'ready' : '';
+  const score = props.score || 0;
+
+  const scoreStyle = {
+    marginBottom: score + '%'
+  };
+
   return (
-    <div className="col-md-3 col-sm-3 col-xs-3 track" id="field_1">
-      <div className="row runner" id="runner_1">
+    <div className="col-md-3 col-sm-3 col-xs-3 track" onClick={props.increment}>
+      <div className="row runner" style={scoreStyle}>
         <div className="col-md-12">
           <h6>
-            Ready
+            {playerState}
           </h6>
         </div>
         <div className="col-md-12" style={{marginTop: 5 + 'px'}}>
-          <img src={'/' + avatar} className="avatar" />
+          {avatarImg}
         </div>
         <div className="col-md-12">
           <h4>
@@ -56,11 +64,16 @@ class ActiveGame extends Component{
 
   render() {
 
-    console.log('render', this.props);
-
     const game = this.props.games.reduce( ( acc, curr) => {
       return curr.gameHash === this.props.params.hash ? curr : acc;
     }, {});
+
+    console.log('score', game.score);
+
+    let players = Array.isArray(game.players) ? game.players : [];
+    while (players.length < 4) {
+      players.push( (Math.random()) * 1000000 );
+    }
 
     return (
       <div>
@@ -73,14 +86,22 @@ class ActiveGame extends Component{
         <div className="row">
           <div className="wrapper">
 
-          {Array.isArray(game.players) && game.players.map( playerId => {
-            console.log('mapping players', playerId, this.props.players);
+          {players.map( playerId => {
             let player = this.props.players[playerId] || {};
+            console.log('game score', game.score);
+            let score = !Array.isArray(game.score) ? 0 : game.score.reduce( ( acc, curr ) => {
+              return curr.playerId === playerId ? curr.qty : acc;
+            }, 0 );
             return (
               <PlayerTrack
                 key={playerId}
                 username={player.username}
                 avatar={player.avatar}
+                target={game.target}
+                score={score}
+                increment={ () => {
+                  this.props.incrementScore( game.gameId, playerId, 1 );
+                }}
                 />
             );
           })}

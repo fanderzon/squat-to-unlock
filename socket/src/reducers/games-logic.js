@@ -53,9 +53,34 @@ export function createGame(
       readied: null,
       started: null,
       finished: null,
-      score: []
+      score: [{
+        playerId: userId,
+        qty: 0
+      }]
     }
   ];
+}
+
+export function incrementScore( state, gameId, playerId, qty ) {
+  return state.map(function( game ) {
+    if (game.gameId !== gameId || game.status === 'finished') {
+      return game;
+    }
+
+    console.log('game score before', JSON.stringify(game.code));
+
+    game.score = game.score.map( score => {
+        if (score.playerId !== playerId) {
+          return score;
+        }
+        score.qty += qty;
+        return score;
+    });
+
+    console.log('game score after', JSON.stringify(game.code));
+
+    return game;
+  });
 }
 
 export function joinGame( state, gameHash, userId ) {
@@ -70,6 +95,11 @@ export function joinGame( state, gameHash, userId ) {
     if (game.players.indexOf(userId) === -1 && game.players.length < 4) {
       game.players.push(userId);
     }
+
+    game.score.push({
+      playerId: userId,
+      qty: 0
+    });
 
     return game;
   });
@@ -103,13 +133,5 @@ export function startGame( state, gameId ) {
 
     game.status = 'started';
     game.started = new Date();
-  });
-}
-
-export function incrementScore( state, gameId, playerId ) {
-  return state.map(function( state ) {
-    if (game.gameId !== gameId || game.status !== 'finished') {
-      return game;
-    }
   });
 }

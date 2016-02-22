@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { gamesReducer, playersReducer } from './reducers/reducers.js';
-import { default as createSagaMiddleware, takeLatest } from 'redux-saga';
+import { default as createSagaMiddleware, takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 
 export const reducer = combineReducers({
@@ -12,16 +12,27 @@ export const reducer = combineReducers({
 
 export default function makeStore() {
   const createStoreWithMiddleware = applyMiddleware(
-    createSagaMiddleware( watchCreateGameSaga )
+    createSagaMiddleware( watchForWins )
   )( createStore );
 
-  return createStoreWithMiddleware( reducer );
-}
+  const store = createStoreWithMiddleware( reducer );
 
-function* watchCreateGameSaga() {
-  yield* takeLatest('CREATE_GAME', createGameSaga);
-}
+  function* watchForWins() {
+    yield* takeEvery('INCREMENT_SCORE', checkForWin);
+  }
 
-function* createGameSaga( action ) {
+  function* checkForWin( action ) {
+    const game = store.getState().games.filter( game => game.gameId === action.gameId )[0];
+    const target = game.target;
+    const userScore = !Array.isArray(game.score) ? 0 :
+      game.score.reduce( (acc, curr) => {
+        return curr.playerId !== action.playerId ? curr.qty : acc;
+    }, 0);
 
+    if (userScore + action.qty >= target) {
+      yield put({ type: 'FINISHED_GAME', game.gameId });
+    }
+  }
+
+  return store;
 }

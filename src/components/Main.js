@@ -7,7 +7,6 @@ class Main extends Component {
 
   constructor() {
     super();
-    console.log( 'mainMount', listenForSquat );
     this.squatListener = listenForSquat( () => this.props.goTo('/signup') );
   }
 
