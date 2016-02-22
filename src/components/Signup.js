@@ -23,6 +23,12 @@ class Signup extends Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.user && this.props.user.username) {
+      this.props.goTo('/games');
+    }
+  }
+
   onUsernameChanged( e ) {
     this.setState({
       username: e.currentTarget.value
@@ -95,8 +101,10 @@ class Signup extends Component {
 
 
 export const SignupContainer = connect(
-  function() {
-    return {};
+  function( state ) {
+    return {
+      user: state.user
+    };
   },
   actionCreators
 )(Signup);

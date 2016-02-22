@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import { syncHistory, routeReducer , routeActions } from 'react-router-redux';
 import { gamesReducer, playersReducer, userReducer, clientDbReducer } from './reducers/reducers.js';
-import { setGames, setPlayers, setGuid, goTo } from './action-creators.js';
+import { setGames, setPlayers, setGuid, goTo, addPlayer } from './action-creators.js';
 import remoteActionMiddleware from './remote-action-middleware.js';
 import createEngine from 'redux-storage-engine-localStorage';
 import filter from 'redux-storage-decorator-filter';
@@ -40,7 +40,7 @@ const reduxRouterMiddleware = syncHistory(browserHistory);
 const createStoreWithMiddleware = applyMiddleware(
   reduxRouterMiddleware,
   storageMiddleware,
-  createSagaMiddleware( watchCreateUserSaga, watchCreatedGameSaga ),
+  createSagaMiddleware( watchCreateUserSaga, watchActiveGameSaga ),
   remoteActionMiddleware(socket)
 )(createStore);
 
@@ -72,16 +72,17 @@ export function* createUserSaga(action) {
       console.log('pushing route action');
       yield put(goTo('/games'));
       yield put({type: "CREATE_USER_SUCCEEDED", payload});
+      yield put(addPlayer( payload ))
    } catch (error) {
       yield put({type: "CREATE_USER_FAILED", error});
    }
 }
 
-function* watchCreatedGameSaga() {
-  yield* takeLatest('SET_GAMES', checkCreatedGameSaga);
+function* watchActiveGameSaga() {
+  yield* takeLatest('SET_GAMES', checkActiveGameSaga);
 }
 
-function* checkCreatedGameSaga( action ) {
+function* checkActiveGameSaga( action ) {
   console.log('checkCreatedGameSaga', action, store.getState().user.id);
   const activeGame = Array.isArray(action.state) && action.state.filter( game => {
     return game.players.includes(store.getState().user.id) &&

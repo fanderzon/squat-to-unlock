@@ -1,17 +1,14 @@
-let playerCounter = 1;
-export function getPlayerId() {
-  return playerCounter++;
-}
+import objectAssign from 'object-assign';
 
-// FIXME: Very naive player handling with no validation
-export function createPlayer( state, username, avatar ) {
-  console.log('creating new player on server', username, avatar );
-  return [
-    ...state,
-    {
-      playerId: getPlayerId(),
-      username,
-      avatar
-    }
-  ]
+export function addPlayer( state, player ) {
+  let playerObj = {};
+  playerObj[player.id] = {
+    username: player.username,
+    avatar: player.avatar
+  }
+  return objectAssign(
+    {},
+    state,
+    playerObj
+  );
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import * as actionCreators from '../action-creators.js';
 
 function filterOwnGames(games, user) {
   return games.filter(function( game ) {
@@ -9,15 +10,14 @@ function filterOwnGames(games, user) {
 }
 
 const GameItem = (props) => {
-
-  const username = props.players.reduce(
-    (prev, current) => current.playerId === props.game.players[0] ? prev + current.username : prev,
+  const username = Object.keys(props.players).reduce(
+    (prev, current) => current === props.game.createdBy ? prev + props.players[current].username : prev,
     ''
   );
   const noPlayers = props.game.players && props.game.players.length;
   const icon = props.game.type === 'running' ? './images/runner.png' : './images/squat-icon.png';
   return (
-    <tr>
+    <tr onClick={props.onClick}>
       <td className="small-column"><img src={icon} className="game-type-icon" /></td>
       <td>
         <div className="tallColumn">
@@ -34,7 +34,7 @@ const GameItem = (props) => {
 
 class GameList extends Component{
   render() {
-    return (      
+    return (
       <div>
 
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -63,13 +63,14 @@ class GameList extends Component{
             </div>
           </div>
         </div>
-
         <div className="row">
           <table className="table table-striped custom-table table-hover">
             <tbody>
 
               {Array.isArray(this.props.games) && this.props.games.map(function( game, i ) {
-                  return <GameItem key={i} game={game} players={this.props.players}  />
+                  return <GameItem key={i} game={game} players={this.props.players} onClick={() => {
+                    this.props.joinGame( this.props.user.id, game.gameHash );
+                  }}  />
               }.bind(this))}
 
             </tbody>
@@ -89,6 +90,6 @@ function mapStateToProps(state) {
   };
 }
 
-const ConnectedGameList = connect(mapStateToProps)(GameList);
+const ConnectedGameList = connect(mapStateToProps, actionCreators)(GameList);
 
 export default ConnectedGameList;
