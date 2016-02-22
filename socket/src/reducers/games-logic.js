@@ -41,6 +41,7 @@ export function createGame(
     {
       gameId: gameId,
       gameHash: getGameHash( gameId ),
+      createdBy: userId,
       type,
       mode,
       target,

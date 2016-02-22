@@ -48,7 +48,7 @@ class ActiveGame extends Component{
                   </h6>
                 </div>
                 <div className="col-md-12" style={{marginTop: 5 + 'px'}}>
-                  <img src="./images/male_1.png" className="avatar"></img>
+                  <img src="/images/male_1.png" className="avatar"></img>
                 </div>
                 <div className="col-md-12">
                   <h4>
@@ -71,7 +71,7 @@ class ActiveGame extends Component{
                   </h6>
                 </div>
                 <div className="col-md-12" style={{marginTop: 5 + 'px'}}>
-                  <img src="./images/female_1.png" className="avatar"></img>
+                  <img src="/images/female_1.png" className="avatar"></img>
                 </div>
                 <div className="col-md-12">
                   <h4>
@@ -104,8 +104,8 @@ class ActiveGame extends Component{
               Invite players to join the game:
             </p>
             <p className="text-center">
-              <button className="btn social-btn"><img src="./images/Twitter.png" /></button>
-              <button className="btn social-btn"><img src="./images/Facebook.png" /></button>
+              <button className="btn social-btn"><img src="/images/Twitter.png" /></button>
+              <button className="btn social-btn"><img src="/images/Facebook.png" /></button>
             </p>
           </Modal.Body>
           <Modal.Footer>
