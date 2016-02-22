@@ -5,6 +5,7 @@ export const ADD_PLAYER = 'ADD_PLAYER';
 export const SET_GUID = 'SET_GUID';
 export const CREATE_GAME = 'CREATE_GAME';
 export const JOIN_GAME = 'JOIN_GAME';
+export const INCREMENT_SCORE = 'INCREMENT_SCORE';
 import { routeActions } from 'react-router-redux';
 
 export function goTo( path ) {
@@ -34,6 +35,19 @@ export function addPlayer( player ) {
       remote: true
     },
     player
+  };
+}
+
+export function incrementScore( gameId, playerId, qty = 1 ) {
+  console.log('incrementScore AC', playerId, qty);
+  return {
+    type: INCREMENT_SCORE,
+    meta: {
+      remote: true
+    },
+    gameId,
+    playerId,
+    qty
   };
 }
 
